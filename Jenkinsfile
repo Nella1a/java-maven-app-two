@@ -43,7 +43,7 @@ pipeline {
                 script {
                     env.ENV = input (
                     message: "Select the environment to deploy to",
-                    ok "Done",
+                    ok: "Done",
                     parameters: [
                         choice(
                             name: 'ONE',
