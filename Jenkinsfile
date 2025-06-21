@@ -8,7 +8,7 @@ pipeline {
             steps {
                 script {
                     echo "building the application"
-                    sh 'maven package'
+                    sh 'mvn package'
                 }
             }
         }
