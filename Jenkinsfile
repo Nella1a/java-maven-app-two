@@ -45,5 +45,23 @@ pipeline {
                 }
             }
         }
+
+        stage ("commit version update"){
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'github-cred', passwordVariable: 'PASS', usernameVariable: 'USER')]){
+                      sh 'git config --global user.email "jenkins@example.com"'
+                      sh 'git config --global user.name "jenkins"'
+                      sh 'git status'
+                      sh 'git branch'
+                      sh 'git config --list'
+
+                      sh "git remote set-url origin https://${USER}:${PASS}@github.com/Nella1a/java-maven-app-two.git"
+                      sh 'git add .'
+                      sh 'git commit -m "ci: version bump"'
+                      sh 'git push origin HEAD:java-maven-app-dynamic-version-increment'
+                    }
+                }
+            }
     }
 }
