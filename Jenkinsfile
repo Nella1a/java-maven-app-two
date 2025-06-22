@@ -11,7 +11,6 @@ pipeline {
                 }
             }
         }
-
         stage("build") {
             when {
                 expression {
@@ -24,7 +23,6 @@ pipeline {
                 }
             }
         }
-
         stage("deploy") {
             when {
                 expression {
