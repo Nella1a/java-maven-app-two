@@ -24,10 +24,12 @@ pipeline {
             }
         }
 
-        stage("build image") {
+        stage("build and push image") {
             steps {
                 script {
                        buildImage 'kanjamn/demo-app:jma-3.0'
+                       dockerLogin()
+                       dockerPush 'kanjamn/demo-app:jma-3.0'
                 }
             }
         }
