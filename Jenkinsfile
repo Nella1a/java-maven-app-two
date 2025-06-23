@@ -54,7 +54,7 @@ pipeline {
                       sh 'git branch'
                       sh 'git config --list'
 
-                      sh "git remote set-url origin https://${USER}:${PASS}@github.com/Nella1a/java-maven-app-two.git"
+                      sh "git remote set-url origin https://$USER:$PASS@github.com/Nella1a/java-maven-app-two.git"
                       sh 'git add .'
                       sh 'git commit -m "ci: version bump"'
                       sh 'git push origin HEAD:java-maven-app-dynamic-version-increment'
