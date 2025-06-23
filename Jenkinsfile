@@ -3,6 +3,9 @@ pipeline {
     tools {
         maven 'maven-3.9'
     }
+    environment {
+    GH_EMAIL = credentials('gh-email')
+    }
     stages {
         stage('increment version'){
             steps {
@@ -49,16 +52,18 @@ pipeline {
         stage ("commit version update"){
             steps {
                 script {
-                      withCredentials([usernamePassword(credentialsId: 'github-cred', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                      withCredentials([usernamePassword(credentialsId: 'git-cred-two', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                      sh 'git config user.name "$USER"'
+                      sh 'git config user.email "$GH_EMAIL"'
+
                       sh 'git status'
                       sh 'git branch'
                       sh 'git config --list'
 
-                      sh "git remote set-url origin https://${USER}:${PASS}@github.com/Nella1a/java-maven-app-two.git"
+                      sh 'git remote set-url origin https://$USER:$PASS@github.com/Nella1a/java-maven-app-two.git'
                       sh 'git add .'
-                      sh 'git branch'
                       sh 'git commit -m "ci: version bump"'
-                      sh 'git push HEAD:java-maven-app-dynamic-version-increment HEAD:java-maven-app-dynamic-version-increment'
+                      sh 'git push origin HEAD:java-maven-app-dynamic-version-increment'
                     }
                 }
             }
