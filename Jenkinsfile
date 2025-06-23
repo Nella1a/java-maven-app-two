@@ -52,7 +52,7 @@ pipeline {
         stage ("commit version update"){
             steps {
                 script {
-                      withCredentials([usernamePassword(credentialsId: 'git-cred-two', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                      withCredentials([usernamePassword(credentialsId: 'github-cred-two', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                       sh 'git config user.name "$USER"'
                       sh 'git config user.email "$GH_EMAIL"'
 
