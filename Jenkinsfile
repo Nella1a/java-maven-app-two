@@ -3,9 +3,6 @@ pipeline {
     tools {
         maven 'maven-3.9'
     }
-    environment {
-    GH_EMAIL = credentials('gh-email')
-    }
     stages {
         stage('increment version'){
             steps {
