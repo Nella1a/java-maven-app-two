@@ -49,7 +49,7 @@ pipeline {
         stage ("commit version update"){
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'github-cred', passwordVariable: 'PASS', usernameVariable: 'USER')]){
+                      withCredentials([usernamePassword(credentialsId: 'github-cred', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                       sh 'git status'
                       sh 'git branch'
                       sh 'git config --list'
