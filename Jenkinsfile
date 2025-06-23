@@ -58,7 +58,7 @@ pipeline {
                       sh 'git add .'
                       sh 'git branch'
                       sh 'git commit -m "ci: version bump"'
-                      sh 'git push HEAD:java-maven-app-dynamic-version-increment'
+                      sh 'git push HEAD:java-maven-app-dynamic-version-increment HEAD:java-maven-app-dynamic-version-increment'
                     }
                 }
             }
